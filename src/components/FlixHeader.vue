@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header class="p-2">
     <h1>BOOLFLIX</h1>
     <movie-input-search @searchRequest="$emit('searchRequest', $event)"/>
   </header>
@@ -23,5 +23,7 @@ export default {
     justify-content: space-between;
     background-color: black;
     color: red;
+
+    height: 40px;
   }
 </style>

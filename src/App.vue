@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <flix-header @searchRequest="apiRequest($event)"/>
-    <flix-search-main :dataFilmList="filmList" />
+    <main class="h-100 p-2">
+      <flix-search-main :dataFilmList="filmList" :dataTvList="tvList"/>
+    </main>
   </div>
 </template>
 
@@ -14,7 +16,8 @@ export default {
   name: 'App',
   data () {
     return {
-      filmList: null
+      filmList: null,
+      tvList: null
     }
   },
   components: {
@@ -27,7 +30,10 @@ export default {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4f1f1247800f9e15eb8e848040bd46aa&query=${searchStr}`)
         .then(result => {
           this.filmList = [...result.data.results]
-          console.log(this.filmList)
+        })
+      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=4f1f1247800f9e15eb8e848040bd46aa&query=${searchStr}`)
+        .then(result => {
+          this.tvList = [...result.data.results]
         })
     }
   }
@@ -36,4 +42,12 @@ export default {
 
 <style lang="scss">
   @import "../node_modules/bootstrap/scss/bootstrap";
+  #app{
+    height: 100vh;
+    overflow: hidden;
+  }
+  main{
+    height: calc(100% - 40px);
+    background-color: grey;
+  }
 </style>

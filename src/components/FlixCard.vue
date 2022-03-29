@@ -1,6 +1,7 @@
 <template>
   <div class="col">
     <div class="card h-100">
+      <h2 v-if="dataFilm.name">{{dataFilm.name}}</h2>
       <h2 v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</h2>
       <h2>{{dataFilm.original_title}}</h2>
       <lang-flag :iso="dataFilm.original_language" />
