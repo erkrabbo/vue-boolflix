@@ -1,7 +1,7 @@
 <template>
   <header>
     <h1>BOOLFLIX</h1>
-    <movie-input-search />
+    <movie-input-search @searchRequest="$emit('searchRequest', $event)"/>
   </header>
 </template>
 

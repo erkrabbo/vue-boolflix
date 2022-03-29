@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <div class="row row-cols-5">
-      <flix-card />
+    <div class="row row-cols-5 g-2">
+      <flix-card v-for="film in dataFilmList" :key="film.id" :dataFilm="film"/>
     </div>
   </div>
 </template>
@@ -13,6 +13,9 @@ export default {
   name: 'FlixSearchMain',
   components: {
     FlixCard
+  },
+  props: {
+    dataFilmList: Array
   }
 }
 </script>
