@@ -36,7 +36,9 @@ export default {
         .then(result => {
           this.tvList = [...result.data.results]
         })
-      this.searched = true
+      setTimeout(() => {
+        this.searched = true
+      }, 500)
     }
   }
 }

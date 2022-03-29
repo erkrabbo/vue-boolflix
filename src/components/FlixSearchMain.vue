@@ -6,7 +6,7 @@
       <p v-if="dataTvList.length" class="w-100">Series:</p>
       <flix-card v-for="tv in dataTvList" :key="tv.id" :dataFilm="tv" />
     </div>
-    <div v-if="searched && (!dataFilmList.length || !dataTvList.length)">
+    <div v-else-if="searched && (!dataFilmList.length || !dataTvList.length)">
       no results
     </div>
   </div>
