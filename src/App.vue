@@ -2,7 +2,7 @@
   <div id="app">
     <flix-header @searchRequest="apiRequest($event)"/>
     <main class="h-100 p-2">
-      <flix-search-main :dataFilmList="filmList" :dataTvList="tvList"/>
+      <flix-search-main :dataFilmList="filmList" :dataTvList="tvList" :searched="searched"/>
     </main>
   </div>
 </template>
@@ -16,8 +16,9 @@ export default {
   name: 'App',
   data () {
     return {
-      filmList: null,
-      tvList: null
+      filmList: [],
+      tvList: [],
+      searched: false
     }
   },
   components: {
@@ -35,6 +36,7 @@ export default {
         .then(result => {
           this.tvList = [...result.data.results]
         })
+      this.searched = true
     }
   }
 }

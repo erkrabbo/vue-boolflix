@@ -1,10 +1,13 @@
 <template>
   <div class="container">
-    <div class="row row-cols-5 p-2 g-2 h-100">
-      <p v-if="dataFilmList" class="w-100">Films:</p>
+    <div v-if="!searched && dataFilmList.length || dataTvList.length" class="row row-cols-5 p-2 g-2 h-100">
+      <p v-if="dataFilmList.length" class="w-100">Films:</p>
       <flix-card v-for="film in dataFilmList" :key="film.id" :dataFilm="film"/>
-      <p v-if="dataTvList" class="w-100">Series:</p>
+      <p v-if="dataTvList.length" class="w-100">Series:</p>
       <flix-card v-for="tv in dataTvList" :key="tv.id" :dataFilm="tv" />
+    </div>
+    <div v-if="searched && (!dataFilmList.length || !dataTvList.length)">
+      no results
     </div>
   </div>
 </template>
@@ -19,7 +22,8 @@ export default {
   },
   props: {
     dataFilmList: Array,
-    dataTvList: Array
+    dataTvList: Array,
+    searched: Boolean
   }
 }
 </script>
