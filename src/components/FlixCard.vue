@@ -2,18 +2,20 @@
   <div class="col">
     <div class="card align-items-center h-100">
       <div class="flip-card-back">
-        <ul class="list-unstyled">
-          <li v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</li>
-          <li>{{dataFilm.original_name}}</li>
-          <li v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</li>
-          <li>{{dataFilm.original_title}}</li>
-          <li><lang-flag :iso="dataFilm.original_language" /></li>
-          <li class="d-flex justify-content-center">
-            <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span>
-            <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000">v</span>
-          </li>
-          <li>{{ dataFilm.overview }}</li>
-        </ul>
+        <PerfectScrollbar>
+          <ul class="list-unstyled">
+            <li v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</li>
+            <li>{{dataFilm.original_name}}</li>
+            <li v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</li>
+            <li>{{dataFilm.original_title}}</li>
+            <li><lang-flag :iso="dataFilm.original_language" /></li>
+            <li class="d-flex justify-content-center">
+              <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span>
+              <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000">v</span>
+            </li>
+            <li>{{ dataFilm.overview }}</li>
+          </ul>
+        </PerfectScrollbar>
         <!-- <p v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</p>
         <p>{{dataFilm.original_name}}</p>
         <p v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</p>

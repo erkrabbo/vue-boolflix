@@ -2,7 +2,9 @@
   <div id="app">
     <flix-header @searchRequest="apiRequest($event)"/>
     <main class="p-2">
-      <flix-search-main :dataFilmList="filmList" :dataTvList="tvList" :searched="searched"/>
+      <PerfectScrollbar>
+        <flix-search-main :dataFilmList="filmList" :dataTvList="tvList" :searched="searched"/>
+      </PerfectScrollbar>
     </main>
   </div>
 </template>
@@ -11,6 +13,7 @@
 import FlixHeader from './components/FlixHeader.vue'
 import FlixSearchMain from './components/FlixSearchMain.vue'
 import axios from 'axios'
+// import PerfectScrollbar from 'vue2-perfect-scrollbar'
 
 export default {
   name: 'App',
@@ -60,6 +63,7 @@ export default {
 
 <style lang="scss">
   @import "../node_modules/bootstrap/scss/bootstrap";
+  @import 'vue2-perfect-scrollbar/dist/vue2-perfect-scrollbar.css';
   #app{
     height: 100vh;
     overflow: hidden;
@@ -68,5 +72,8 @@ export default {
     height: calc(100% - 40px);
     background-color: grey;
     overflow-y: auto;
+  }
+  .ps{
+    height: 100%;
   }
 </style>
