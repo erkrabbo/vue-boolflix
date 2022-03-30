@@ -27,18 +27,30 @@ export default {
   },
   methods: {
     apiRequest (searchStr) {
-      console.log(searchStr)
-      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=4f1f1247800f9e15eb8e848040bd46aa&query=${searchStr}`)
-        .then(result => {
-          this.filmList = [...result.data.results]
+      if (searchStr.length) {
+        console.log(searchStr)
+        axios.get('https://api.themoviedb.org/3/search/movie', {
+          params: {
+            api_key: '4f1f1247800f9e15eb8e848040bd46aa',
+            query: searchStr
+          }
         })
-      axios.get(`https://api.themoviedb.org/3/search/tv?api_key=4f1f1247800f9e15eb8e848040bd46aa&query=${searchStr}`)
-        .then(result => {
-          this.tvList = [...result.data.results]
+          .then(result => {
+            this.filmList = [...result.data.results]
+          })
+        axios.get('https://api.themoviedb.org/3/search/tv', {
+          params: {
+            api_key: '4f1f1247800f9e15eb8e848040bd46aa',
+            query: searchStr
+          }
         })
-      setTimeout(() => {
-        this.searched = true
-      }, 500)
+          .then(result => {
+            this.tvList = [...result.data.results]
+          })
+        setTimeout(() => {
+          this.searched = true
+        }, 500)
+      }
     }
   }
 }

@@ -1,12 +1,12 @@
 <template>
   <div class="container">
-    <div v-if="!searched && dataFilmList.length || dataTvList.length" class="row row-cols-5 p-2 g-2 h-100">
+    <div v-if="searched && dataFilmList.length || dataTvList.length" class="row row-cols-5 p-2 g-2">
       <p v-if="dataFilmList.length" class="w-100">Films:</p>
       <flix-card v-for="film in dataFilmList" :key="film.id" :dataFilm="film"/>
       <p v-if="dataTvList.length" class="w-100">Series:</p>
       <flix-card v-for="tv in dataTvList" :key="tv.id" :dataFilm="tv" />
     </div>
-    <div v-else-if="searched && (!dataFilmList.length || !dataTvList.length)">
+    <div v-else-if="searched && (!dataFilmList.length && !dataTvList.length)">
       no results
     </div>
   </div>
@@ -33,6 +33,7 @@ export default {
   height: 96%;
 }
 .row{
+  max-height: 100%;
   overflow: auto;
 }
 
