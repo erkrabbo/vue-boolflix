@@ -7,8 +7,12 @@
       <h2>{{dataFilm.original_title}}</h2>
       <lang-flag :iso="dataFilm.original_language" />
       <!-- <h3>{{dataFilm.original_language}}</h3> -->
-      <h3>{{dataFilm.vote_average}}</h3>
-      <img :src="'https://image.tmdb.org/t/p/original/' + dataFilm.poster_path" :alt="dataFilm.original_title">
+      <div>
+        <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span>
+        <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index">v</span>
+      </div>
+      <img v-if="dataFilm.poster_path != null" :src="'https://image.tmdb.org/t/p/original/' + dataFilm.poster_path" :alt="dataFilm.original_title">
+      <img v-else src="https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg" alt="image not found">
     </div>
   </div>
 </template>
@@ -23,6 +27,12 @@ export default {
   },
   components: {
     LangFlag
+  },
+  methods: {
+    averageStars (num) {
+      const avg = Math.floor(num / 10 * 5)
+      return avg
+    }
   }
 }
 </script>

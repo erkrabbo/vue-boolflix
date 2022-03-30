@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="searched && dataFilmList.length || dataTvList.length" class="row row-cols-5 p-2 g-2">
+    <div v-if="searched && dataFilmList.length || dataTvList.length" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 p-lg-2 g-2">
       <p v-if="dataFilmList.length" class="w-100">Films:</p>
       <flix-card v-for="film in dataFilmList" :key="film.id" :dataFilm="film"/>
       <p v-if="dataTvList.length" class="w-100">Series:</p>

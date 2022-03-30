@@ -31,6 +31,7 @@ export default {
         console.log(searchStr)
         axios.get('https://api.themoviedb.org/3/search/movie', {
           params: {
+            language: 'it-IT',
             api_key: '4f1f1247800f9e15eb8e848040bd46aa',
             query: searchStr
           }
@@ -40,6 +41,7 @@ export default {
           })
         axios.get('https://api.themoviedb.org/3/search/tv', {
           params: {
+            language: 'it-IT',
             api_key: '4f1f1247800f9e15eb8e848040bd46aa',
             query: searchStr
           }
