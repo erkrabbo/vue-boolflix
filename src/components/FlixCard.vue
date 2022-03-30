@@ -2,17 +2,29 @@
   <div class="col">
     <div class="card align-items-center h-100">
       <div class="flip-card-back">
-        <p v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</p>
+        <ul class="list-unstyled">
+          <li v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</li>
+          <li>{{dataFilm.original_name}}</li>
+          <li v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</li>
+          <li>{{dataFilm.original_title}}</li>
+          <li><lang-flag :iso="dataFilm.original_language" /></li>
+          <li class="d-flex justify-content-center">
+            <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span>
+            <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index">v</span>
+          </li>
+          <li>{{ dataFilm.overview }}</li>
+        </ul>
+        <!-- <p v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</p>
         <p>{{dataFilm.original_name}}</p>
         <p v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</p>
         <p>{{dataFilm.original_title}}</p>
-        <lang-flag :iso="dataFilm.original_language" />
-        <!-- <h3>{{dataFilm.original_language}}</h3> -->
-        <div>
+        <lang-flag :iso="dataFilm.original_language" /> -->
+                        <!-- <h3>{{dataFilm.original_language}}</h3> -->
+        <!-- <div>
           <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span>
           <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index">v</span>
         </div>
-        <p>{{ dataFilm.overview }}</p>
+        <p>{{ dataFilm.overview }}</p> -->
       </div>
       <div class="flip-card-front">
         <img v-if="dataFilm.poster_path != null" class="card-img" :src="'https://image.tmdb.org/t/p/original/' + dataFilm.poster_path" :alt="dataFilm.original_title">
