@@ -10,7 +10,7 @@
           <li><lang-flag :iso="dataFilm.original_language" /></li>
           <li class="d-flex justify-content-center">
             <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span>
-            <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index">v</span>
+            <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000">v</span>
           </li>
           <li>{{ dataFilm.overview }}</li>
         </ul>
