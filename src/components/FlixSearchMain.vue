@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="searched && dataFilmList.length || dataTvList.length" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 p-lg-2 g-2">
+    <div v-if="searched && dataFilmList.length || dataTvList.length" class="row row-cols-1 row-cols-sm-2 row-cols-md-4 row-cols-lg-5 p-4 g-4">
       <p v-if="dataFilmList.length" class="w-100">Films:</p>
       <flix-card v-for="film in dataFilmList" :key="film.id" :dataFilm="film"/>
       <p v-if="dataTvList.length" class="w-100">Series:</p>
@@ -30,12 +30,13 @@ export default {
 
 <style scoped>
 .container{
-  height: 96%;
+  height: 100%;
+  /* overflow: auto; */
 }
-.row{
+/* .row{
   max-height: 100%;
-  overflow: auto;
-}
+
+} */
 
 ::-moz-scrollbar{
   width: 5px;

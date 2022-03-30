@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <flix-header @searchRequest="apiRequest($event)"/>
-    <main class="h-100 p-2">
+    <main class="p-2">
       <flix-search-main :dataFilmList="filmList" :dataTvList="tvList" :searched="searched"/>
     </main>
   </div>
@@ -67,5 +67,6 @@ export default {
   main{
     height: calc(100% - 40px);
     background-color: grey;
+    overflow-y: auto;
   }
 </style>
