@@ -8,7 +8,12 @@
             <li>{{dataFilm.original_name}}</li>
             <li v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</li>
             <li>{{dataFilm.original_title}}</li>
-            <li><lang-flag :iso="dataFilm.original_language" /></li>
+            <li>
+              <!-- <span :title="dataFilm.original_language" :class="'flag-icon flag-icon-'+ dataFilm.original_language" :alt="dataFilm.original_language"></span> -->
+              <lang-flag :iso="dataFilm.original_language" :class="'flag-icon flag-icon-'+ dataFilm.original_language" :squared=false :alt="dataFilm.original_language" />
+              <!-- {{dataFilm.original_language}} -->
+              <!-- <p>{{dataFilm.original_language}}</p> -->
+            </li>
             <li class="d-flex justify-content-center">
               <font-awesome-icon v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index" icon="star" />
               <font-awesome-icon v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000" icon="fa-regular fa-star" />
