@@ -64,6 +64,12 @@ export default {
   .col:hover .card {
     transform: rotateY(180deg);
   }
+  // .col:hover .flip-card-back{
+  //   z-index: 2;
+  // }
+  // .col:hover .flip-card-front{
+  //   z-index: -1;
+  // }
 
   .flip-card-front, .flip-card-back {
     position: absolute;
@@ -71,6 +77,7 @@ export default {
     height: 100%;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    transform: rotateX(0deg)
   }
 
   .flip-card-front {
@@ -88,5 +95,6 @@ export default {
     color: white;
     transform: rotateY(180deg);
     overflow: auto;
+    z-index: -1;
   }
 </style>
