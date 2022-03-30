@@ -1,6 +1,6 @@
 <template>
   <header class="p-2">
-    <h1>BOOLFLIX</h1>
+    <h1 class="m-0 me-2">BOOLFLIX</h1>
     <movie-input-search @searchRequest="$emit('searchRequest', $event)"/>
   </header>
 </template>
