@@ -1,24 +1,23 @@
 <template>
-  <div id="app">
-    <flix-header @searchRequest="apiRequest($event)"/>
+  <v-app>
+   <flix-header @searchRequest="apiRequest($event)"/>
     <main class="p-2">
-      <PerfectScrollbar>
-        <flix-search-main :dataFilmList="filmList" :dataTvList="tvList" :searched="searched"/>
-      </PerfectScrollbar>
+      <v-select name="genres" :rounded="true" single-line placeholder="Filtra per genere:" background-color="white" chips deletable-chips :items="genresList"></v-select>
+      <flix-search-main :dataFilmList="filmList" :dataTvList="tvList" :searched="searched"/>
     </main>
-  </div>
+  </v-app>
 </template>
 
 <script>
 import FlixHeader from './components/FlixHeader.vue'
 import FlixSearchMain from './components/FlixSearchMain.vue'
 import axios from 'axios'
-// import PerfectScrollbar from 'vue2-perfect-scrollbar'
 
 export default {
   name: 'App',
   data () {
     return {
+      genresList: [],
       filmList: [],
       tvList: [],
       searched: false
@@ -57,6 +56,12 @@ export default {
         }, 500)
       }
     }
+  },
+  created () {
+    axios.get('https://api.themoviedb.org/3/genre/movie/list?api_key=4f1f1247800f9e15eb8e848040bd46aa&language=it-IT')
+      .then(res => res.data.genres.forEach(element => {
+        this.genresList.push(element.name)
+      }))
   }
 }
 </script>

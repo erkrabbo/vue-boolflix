@@ -1,45 +1,29 @@
 <template>
   <div class="col">
-    <div class="card align-items-center h-100">
-      <div class="flip-card-back">
-        <PerfectScrollbar>
-          <ul class="list-unstyled">
-            <li v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</li>
-            <li>{{dataFilm.original_name}}</li>
-            <li v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</li>
-            <li>{{dataFilm.original_title}}</li>
-            <li>
-              <!-- <span :title="dataFilm.original_language" :class="'flag-icon flag-icon-'+ dataFilm.original_language" :alt="dataFilm.original_language"></span> -->
-              <lang-flag :iso="dataFilm.original_language" :class="'flag-icon flag-icon-'+ dataFilm.original_language" :squared=false :alt="dataFilm.original_language" />
-              <!-- {{dataFilm.original_language}} -->
-              <!-- <p>{{dataFilm.original_language}}</p> -->
-            </li>
-            <li class="d-flex justify-content-center">
-              <font-awesome-icon v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index" icon="star" />
-              <font-awesome-icon v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000" icon="fa-regular fa-star" />
-              <!-- <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span> -->
-              <!-- <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000">v</span> -->
-            </li>
-            <li>{{ dataFilm.overview }}</li>
-          </ul>
-        </PerfectScrollbar>
-        <!-- <p v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</p>
-        <p>{{dataFilm.original_name}}</p>
-        <p v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</p>
-        <p>{{dataFilm.original_title}}</p>
-        <lang-flag :iso="dataFilm.original_language" /> -->
-                        <!-- <h3>{{dataFilm.original_language}}</h3> -->
-        <!-- <div>
-          <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span>
-          <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index">v</span>
-        </div>
-        <p>{{ dataFilm.overview }}</p> -->
+    <v-card href="https://www.youtube.com/watch?v=HmZm8vNHBSU" class="card align-items-center h-100">
+      <div class="flip-card-back p-1">
+        <ul class="list-unstyled">
+          <li v-if="dataFilm.name != dataFilm.original_name">{{dataFilm.name}}</li>
+          <li>{{dataFilm.original_name}}</li>
+          <li v-if="dataFilm.title != dataFilm.original_title">{{dataFilm.title}}</li>
+          <li>{{dataFilm.original_title}}</li>
+          <li>
+            <lang-flag :iso="dataFilm.original_language" :class="'flag-icon flag-icon-'+ dataFilm.original_language" :squared=false :alt="dataFilm.original_language" />
+          </li>
+          <li class="d-flex justify-content-center">
+            <font-awesome-icon v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index" icon="star" />
+            <font-awesome-icon v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000" icon="fa-regular fa-star" />
+            <!-- <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span> -->
+            <!-- <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000">v</span> -->
+          </li>
+          <li>{{ dataFilm.overview }}</li>
+        </ul>
       </div>
       <div class="flip-card-front">
-        <img v-if="dataFilm.poster_path != null" class="card-img" :src="'https://image.tmdb.org/t/p/original/' + dataFilm.poster_path" :alt="dataFilm.original_title">
+        <img v-if="dataFilm.poster_path != null" class="card-img" :src="'https://image.tmdb.org/t/p/w342/' + dataFilm.poster_path" :alt="dataFilm.original_title">
         <img v-else class="card-img" src="https://wellesleysocietyofartists.org/wp-content/uploads/2015/11/image-not-found.jpg" alt="image not found">
       </div>
-    </div>
+    </v-card>
   </div>
 </template>
 
@@ -85,12 +69,6 @@ export default {
   .col:hover .card {
     transform: rotateY(180deg);
   }
-  // .col:hover .flip-card-back{
-  //   z-index: 2;
-  // }
-  // .col:hover .flip-card-front{
-  //   z-index: -1;
-  // }
 
   .flip-card-front, .flip-card-back {
     position: absolute;
