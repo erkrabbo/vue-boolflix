@@ -13,8 +13,6 @@
           <li class="d-flex justify-content-center">
             <font-awesome-icon v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index" icon="star" />
             <font-awesome-icon v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000" icon="fa-regular fa-star" />
-            <!-- <span v-for="(stars, index) in averageStars(dataFilm.vote_average)" :key="index">s</span> -->
-            <!-- <span v-for="(stars,index) in (5 - averageStars(dataFilm.vote_average))" :key="index + 1000">v</span> -->
           </li>
           <li>{{ dataFilm.overview }}</li>
         </ul>
